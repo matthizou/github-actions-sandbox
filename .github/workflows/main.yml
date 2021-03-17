@@ -22,12 +22,21 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      # - uses: actions/checkout@v2
-
-      - uses: Typeform/.github/shared-actions/send-deployment-event@master
+      - uses: actions/hello-world-javascript-action@main
         with:
-          user-id: '16235864'
+          who-to-greet: 'Mona the Octocat'
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - run: echo hasfile1 ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('.github/workflows/**.yml') }}
+        shell: bash
+        name: From workflow
+
+      - uses: ./actions/hello-world-composite-run-steps-action
+        name: Run custom action
+        with:
+          who-to-greet: 'handsome-stranger-5342'
 
       # Runs a single command using the runners shell
       - name: Run a one-line script

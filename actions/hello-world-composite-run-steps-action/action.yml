@@ -12,7 +12,15 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    # - run: echo Hello ${{ inputs.who-to-greet }}.
+    #   shell: bash
+    - uses: actions/hello-world-javascript-action@main
+      with:
+        who-to-greet: 'Bob the builder'
+    - uses: actions/checkout@v2
+    - run: echo From Custom Action
+      shell: bash
+    - run: echo hasfile ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('.github/workflows/**.yml') }}
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
