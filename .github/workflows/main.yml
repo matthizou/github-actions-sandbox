@@ -29,11 +29,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # test javascript action
-      - name: Run custom JS action
-        uses: ./actions/hello-world-js-action
+      - name: Setup js/ts environment
+        uses: ./actions/hello-world-composite
         with:
           who-to-greet: 'Mona the Octocat'
+      # test javascript action
+      # - name: Run custom JS action
+      #   uses: ./actions/hello-world-js-action
+      #   with:
+      #     who-to-greet: 'Mona the Octocat'
+
+      # - name: Run custom JS action 2
+      #   uses: ./actions/hello-world-2-js-action
 
       # Test hash and file access
       # - run: echo hasfile1 ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('.github/workflows/**.yml') }}

@@ -5,12 +5,13 @@
   "private": false,
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
-    "checkout": "actions/checkout"
+    "@actions/github": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.27.0"
   },
   "scripts": {
     "distribute": "yarn ncc build index.js",
-    "start": "node index.js",
-    "start:action": "ncc build -w index.js"
+    "start": "node index.js"
   }
 }
