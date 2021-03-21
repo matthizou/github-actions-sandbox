@@ -14,8 +14,10 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
-    - run: ${{ github.action_path }}/goodbye.sh
       shell: bash

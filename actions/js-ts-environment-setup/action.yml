@@ -16,11 +16,6 @@ runs:
       with:
         node-version: 12
 
-    - name: Set up registry
-      run: |
-        npm config set '//npm.pkg.github.com/:_authToken' ${{ inputs.gh-token }}
-        npm config set @typeform:registry https://npm.pkg.github.com/
-
     - name: Get yarn cache
       if: inputs.cache-key != ''
       uses: actions/cache@v2
